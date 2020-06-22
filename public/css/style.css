@@ -1,0 +1,92 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+
+}
+body{
+    background-color: brown;
+    color: white;
+    height: 100vh;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+.header > h1 > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'middle middle middle middle middle middle'
+    'footer footer footer footer footer footer';
+   grid-column-gap: 5px;
+}
+
+.middle{
+  padding: 10px;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.middle > .card-todo{
+    background-color: rgb(255, 248, 220, 0.3);
+    -ms-flex: 19%;
+    flex: 19%;
+    max-width: 19%;
+    padding: 5px 5px 0px 5px;
+    margin: 5px 5px 0px 5px;
+    text-align: center;
+    width: 100%;
+    min-height: 350px !important;
+    border-radius: 0;
+    border: solid 1px rgb(255, 248, 220, 0.5);
+}
+.middle > .card-todo > .title{
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(231, 179, 46);
+}
+
+.middle > .card-todo > .description{
+    color: #fff;
+}
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .grid-container  {
+    grid-template-areas:
+      'header header header header header header'
+      'middle middle middle middle middle middle'
+      'footer footer footer footer footer footer';
+  }
+}
