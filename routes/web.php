@@ -11,26 +11,16 @@
 |
 */
 use \Illuminate\Support\Facades\Route;
+use \Illuminate\Http\Request;
+use App\todolist;
 
-Route::get('/', function () {
-    $todo = [
-        'Hacer algo!',
-        'Hacer algo mas!',
-        'Hacerlo despues',
-        'Hacer esto en la tarde',
-        'Hacer al finalizar',
-    ];
-    return view('todolist', ['todolist'=> $todo]);
-});
+Route::get('/', 'TodoListController@index')->name('todolist');
 
-Route::get('/todolist/create', function () {
-    return "Here we'll create new todo item";
-});
+Route::get('todolist/create', 'TodoListController@createget')->name('todolist.create');
 
-Route::get('/todolist/update/{id}', function($id){
-    return "Here we are going to update todo item with id: ".$id;
-})->where('id', '\d+');
+Route::post('todolist/create', 'TodoListController@createpost')->name('todolist.create');
 
-Route::get('/todolist/delete/{id}', function($id){
-    return "Here we are going to delete todo item with id: ". $id;
-})->where('id', '\d+');
+Route::get('todolist/update/{id}', 'TodoListController@updateget' )->where('id', '\d+')->name('todolist.update');
+Route::put('todolist/update/{todo}', 'TodoListController@updateput' )->where('todo', '\d+')->name('todolist.update');
+
+Route::delete('todolist/delete/{todo}', 'TodoListController@delete' )->where('todo', '\d+')->name('todolist.delete');
